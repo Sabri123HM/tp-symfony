@@ -1,0 +1,15 @@
+{% extends 'layouts/accueil.html.twig' %}
+
+{% block title %}Spotify | Modifier Son
+{% endblock %}
+
+{% block body %}
+	<h1>Modifer le son</h1>
+
+	{{ include('son/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+	{{ include('son/_delete_form.html.twig') }}
+
+	<a href="{{ path('son_index') }}">Retournez à la liste</a>
+{% endblock %}

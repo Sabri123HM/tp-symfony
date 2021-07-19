@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+Nom du son :
+{{ form_widget(form.nomSon, {'attr':{'class':'form-control'}}) }}
+Longueur du son :
+{{ form_widget(form.longueurSon, {'attr':{'class':'form-control'}}) }}
+Artiste :
+{{ form_widget(form.artiste, {'attr':{'class':'form-control'}}) }}
+<button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

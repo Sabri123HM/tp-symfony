@@ -1,0 +1,52 @@
+{% extends 'layouts/accueil.html.twig' %}
+
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block stylesheets %}
+	{# 'app' must match the first argument to addEntry() in webpack.config.js #}
+	{{ encore_entry_link_tags('accueil') }}
+
+	<!-- Renders a link tag (if your module requires any CSS)
+																																				                 <link rel="stylesheet" href="/build/app.css"> -->
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<h1 style="text-align:center">Index des sons</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom du Son</th>
+					<th>Longueur du son</th>
+					<th>Auteur du son
+					</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for son in sons %}
+					<tr>
+						<td>{{ son.nomSon }}</td>
+						<td>{{ son.longueurSon }}</td>
+						{% for son in son.artiste %}
+							<td>{{ son.nomArtiste }}</td>
+						{% endfor %}
+						<td>
+							<a href="{{ path('son_show', {'id': son.id}) }}">Afficher</a>
+							|
+							<a href="{{ path('son_edit', {'id': son.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">Aucun enregistrement..</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</tbody>
+	</table>
+
+	<a href="{{ path('son_new') }}">Ajouter un son</a>
+{% endblock %}

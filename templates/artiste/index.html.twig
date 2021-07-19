@@ -1,0 +1,41 @@
+{% extends 'layouts/accueil.html.twig' %}
+
+
+{% block title %}Spotify | Article
+{% endblock %}
+
+{% block stylesheets %}
+	{# 'app' must match the first argument to addEntry() in webpack.config.js #}
+	{{ encore_entry_link_tags('accueil') }}
+
+	<!-- Renders a link tag (if your module requires any CSS)
+																																									                 <link rel="stylesheet" href="/build/app.css"> -->
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<h1 style="text-align:center">Index des articles</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom de l'article</th>
+					<th>Description de l'artiste</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for artiste in artistes %}
+					<tr>
+						<td>{{ artiste.nomArtiste }}</td>
+						<td>{{ artiste.descriptionArtiste}}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">Aucun enregistrement..</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</tbody>
+	</table>
+
+	<a href="{{ path('artiste_create') }}">Ajouter un artiste</a>
+{% endblock %}

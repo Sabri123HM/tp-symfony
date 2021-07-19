@@ -1,0 +1,32 @@
+{% extends 'layouts/accueil.html.twig' %}
+
+{% block title %}Battlefield
+{% endblock %}
+{% block stylesheets %}
+
+	{{ encore_entry_link_tags('accueil') }}
+
+
+{% endblock %}
+
+{% block body %}
+	<div class="title">Ajouter un artiste</div>
+	<div class="subtitle">
+		<form action method="POST">
+			<div>
+				<label for="">Nom de l'artiste</label><br>
+				<input type="text" id="nom" name="nom">
+			</div>
+
+			<div>
+				<label for="">Description de l'artiste</label><br>
+				<textarea id="description" name="description"></textarea>
+			</div>
+			<br>
+			<input class="addbtn" type="submit" value="Ajouter">
+		</form>
+	</div>
+	<hr class="my-4">
+	<a class="card-link" href="{{ path('son_index') }}">Index des sons</a>
+
+{% endblock %}
